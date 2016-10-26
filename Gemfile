@@ -37,4 +37,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 gem 'devise'
-gem 'bootstrap'
+gem 'jquery-ui-rails'
+gem 'font-awesome-rails'
+# gem 'bootstrap'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  # gem 'rails-assets-font-awesome'
+end
