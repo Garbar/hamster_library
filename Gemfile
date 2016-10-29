@@ -26,6 +26,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'ffaker'
 end
 
 group :development do
@@ -39,8 +40,6 @@ end
 gem 'devise'
 gem 'jquery-ui-rails'
 gem 'font-awesome-rails'
-# gem 'bootstrap'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
-  # gem 'rails-assets-font-awesome'
 end
