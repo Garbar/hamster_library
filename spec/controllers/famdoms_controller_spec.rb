@@ -11,7 +11,8 @@ RSpec.describe FamdomsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      famdom = create(:famdom)
+      get :show, id: famdom.id
       expect(response).to have_http_status(:success)
     end
   end
@@ -25,7 +26,8 @@ RSpec.describe FamdomsController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      famdom = create(:famdom)
+      get :edit, id: famdom.id
       expect(response).to have_http_status(:success)
     end
   end
