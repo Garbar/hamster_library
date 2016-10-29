@@ -10,15 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029143030) do
+ActiveRecord::Schema.define(version: 20161029155554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "author_stories", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_author_stories_on_author_id", using: :btree
+    t.index ["story_id"], name: "index_author_stories_on_story_id", using: :btree
+  end
 
   create_table "authors", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "famdom_stories", force: :cascade do |t|
+    t.integer  "famdom_id"
+    t.integer  "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["famdom_id"], name: "index_famdom_stories_on_famdom_id", using: :btree
+    t.index ["story_id"], name: "index_famdom_stories_on_story_id", using: :btree
   end
 
   create_table "famdoms", force: :cascade do |t|
@@ -35,20 +53,6 @@ ActiveRecord::Schema.define(version: 20161029143030) do
     t.string   "image_url"
     t.integer  "user_id"
     t.index ["user_id"], name: "index_stories_on_user_id", using: :btree
-  end
-
-  create_table "story_by_authors", force: :cascade do |t|
-    t.integer  "story_id"
-    t.integer  "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "story_by_famdoms", force: :cascade do |t|
-    t.integer  "story_id"
-    t.integer  "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,4 +72,8 @@ ActiveRecord::Schema.define(version: 20161029143030) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "author_stories", "authors"
+  add_foreign_key "author_stories", "stories"
+  add_foreign_key "famdom_stories", "famdoms"
+  add_foreign_key "famdom_stories", "stories"
 end

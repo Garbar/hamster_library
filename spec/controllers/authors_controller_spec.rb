@@ -11,7 +11,8 @@ RSpec.describe AuthorsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      author = create(:author)
+      get :show, id: author.id
       expect(response).to have_http_status(:success)
     end
   end
@@ -25,7 +26,8 @@ RSpec.describe AuthorsController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      author = create(:author)
+      get :edit, id: author.id
       expect(response).to have_http_status(:success)
     end
   end
